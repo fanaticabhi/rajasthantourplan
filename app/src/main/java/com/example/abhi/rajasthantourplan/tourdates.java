@@ -18,9 +18,9 @@ import java.util.Calendar;
 public class tourdates extends AppCompatActivity {
 
     MaterialCalendarView mcv;
-    TextView t1,t2;
+    TextView t1, t2;
     Calendar cal;
-    int count=0;
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +34,11 @@ public class tourdates extends AppCompatActivity {
         mcv.setVisibility(View.GONE);
 
 
-
-
-
         t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mcv.setVisibility(View.VISIBLE);
-                count=0;
+                count = 0;
 
             }
         });
@@ -49,31 +46,31 @@ public class tourdates extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mcv.setVisibility(View.VISIBLE);
-                count=1;
+                count = 1;
 
             }
         });
 
-            mcv.setOnDateChangedListener(new OnDateSelectedListener() {
-                @Override
-                public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+        mcv.setOnDateChangedListener(new OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
 
-                    if (count == 0) {
-                        t1.setText("" + (mcv.getSelectedDate().toString()).substring(12,21));
-                        calendergone();
+                if (count == 0) {
+                    t1.setText("" + (mcv.getSelectedDate().toString()).substring(12, 21));
+                    calendergone();
 
 
-                    } else {
-                        t2.setText("" + (mcv.getSelectedDate().toString()).substring(12,21));
-                        calendergone();
-                    }
-                }});
+                } else {
+                    t2.setText("" + (mcv.getSelectedDate().toString()).substring(12, 21));
+                    calendergone();
+                }
             }
+        });
+    }
 
-            public void calendergone()
-            {
-                mcv.setVisibility(View.GONE);
-            }
+    public void calendergone() {
+        mcv.setVisibility(View.GONE);
+    }
 
     private void calenderstate() {
 
@@ -82,15 +79,15 @@ public class tourdates extends AppCompatActivity {
                 .setMaximumDate(CalendarDay.from(2019, 1, 1))
                 .setCalendarDisplayMode(CalendarMode.MONTHS);
 
-        if(count==0) {
-            mcv.state().edit().setMinimumDate(CalendarDay.from((Integer.parseInt(mcv.getSelectedDate().toString().substring(12,15))),
-                    Integer.parseInt(mcv.getSelectedDate().toString().substring(17,19)),Integer.parseInt(mcv.getSelectedDate().toString().substring(12,15))));
+        if (count == 0) {
+            mcv.state().edit().setMinimumDate(CalendarDay.from((Integer.parseInt(mcv.getSelectedDate().toString().substring(12, 15))),
+                    Integer.parseInt(mcv.getSelectedDate().toString().substring(17, 19)), Integer.parseInt(mcv.getSelectedDate().toString().substring(12, 15))));
         }
-        if(count==1) {
+        if (count == 1) {
             mcv.state().edit().setMinimumDate(CalendarDay.from(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)));
         }
         mcv.state().edit().commit();
     }
-    }
+}
 
 

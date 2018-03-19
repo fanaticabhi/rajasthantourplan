@@ -19,7 +19,7 @@ public class launcher extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 finally {
-                    Intent i=new Intent(launcher.this,tourdates.class);
+                    Intent i=new Intent(launcher.this,touristplaces.class);
                     startActivity(i);
                 }
             }

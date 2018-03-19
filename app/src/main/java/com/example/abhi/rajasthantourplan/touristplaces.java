@@ -9,15 +9,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -25,87 +28,86 @@ import java.util.Map;
 
 public class touristplaces extends AppCompatActivity {
     Spinner s1;
-    static  String data[];
+    static String data[];
+    static String city;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touristplaces);
 
+        s1 = (Spinner) findViewById(R.id.spinner);
+        getjsondata();
 
-        s1=(Spinner)findViewById(R.id.spinner);
 
-        ArrayAdapter<String> arr=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,data);
+ }
+
+
+    public void spinnerarray(){
+        ArrayAdapter<String> arr = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, data);
         s1.setAdapter(arr);
         s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 0) {
+                    Toast.makeText(touristplaces.this,"Please Select a City",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(touristplaces.this, "" + data[i], Toast.LENGTH_SHORT).show();
 
+                    city = (String)s1.getItemAtPosition(i);
+                    Toast.makeText(touristplaces.this, "Hey I selected " + city, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(touristplaces.this, completejsondata.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 
-     public void cityselection() {
-        StringRequest st = new StringRequest(Request.Method.POST,
-                "http://www.rajasthantourplan.esy.es/phpfiles/retrievecity.php", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                getStatus(response);
+    public void getjsondata() {
+
+        JsonArrayRequest st = new JsonArrayRequest("http://www.rajasthantourplan.esy.es/phpfiles/retrievecity.php", new Response.Listener<JSONArray>() {
+            // @Override
+            public void onResponse(JSONArray response) {
+                get_response(response);
+                spinnerarray();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(touristplaces.this,"fatal error" + error.toString(),Toast.LENGTH_SHORT).show();
 
             }
-        }){
-            protected Map<String,String> getParams() {
-                Map<String, String> mp = new HashMap<String, String>();
-              //  mp.put("city",city.getText().toString());
-                return mp;
-            }
-        };
+        });
+
         RequestQueue q = Volley.newRequestQueue(touristplaces.this);
         q.add(st);
     }
 
 
+    public void get_response(JSONArray response) {
+        data = new String[response.length()+1];
+        data[0]="select city";
 
-    public void getStatus(String stt) {
         try {
-            JSONObject obj = new JSONObject(stt);
-            while(obj)
-            String res[] = obj.getString("city");
-                data=res;
-                Toast.makeText(touristplaces.this, "Search Successful", Toast.LENGTH_SHORT).show();
-       } catch(Exception e) {
-            Toast.makeText(touristplaces.this, "Error"+e, Toast.LENGTH_SHORT).show();
+            //printing length of JSONArray
+            // t.setText("" + response.length());
+            for (int i = 0; i < response.length(); i++) {
+                JSONObject object = (JSONObject) response.get(i);
+                String name = object.getString("city");
+                data[i+1] = name;
+            //    t.setText(t.getText() + "\n" + name);
+            }
+        } catch (Exception e) {
+            Toast.makeText(touristplaces.this,"fatal error" + e.toString(),Toast.LENGTH_SHORT).show();
         }
     }
 }
