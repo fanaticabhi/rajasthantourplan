@@ -1,5 +1,6 @@
 package com.example.abhi.rajasthantourplan;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,8 +13,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class listview extends AppCompatActivity {
+    static int choiceplaceindex;
 
     ListView lt;
+
     ArrayList<String> place, place_type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +31,30 @@ public class listview extends AppCompatActivity {
                //Toast.makeText(this, "Hey I am there", Toast.LENGTH_SHORT).show();
                place.add(completejsondata.place[i]);
                place_type.add(completejsondata.place_type[i]);
+
            }
-          // Toast.makeText(this, completejsondata.city[i], Toast.LENGTH_SHORT).show();
+
        }
-
-       //Code to add data to dynamic list.
-
-        customadapter ca = new customadapter(getApplicationContext(), place, place_type);
+         customadapter ca = new customadapter(getApplicationContext(), place, place_type);
         lt.setAdapter(ca);
 
+        lt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                String s = lt.getItemAtPosition(i).toString();
+                choiceplaceindex=i;
+
+                Toast.makeText(listview.this, s, Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(listview.this,Events.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+               // adapter.dismiss(); // If you want to close the adapter
+            }
+        });
 
     }
+
+
 }

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/oldpaper"
+    android:paddingVertical="20dp"
+    tools:context="com.example.abhi.rajasthantourplan.tourschedule">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="30dp"
+        android:paddingHorizontal="15dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/textfielddesign"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Tour Schedule.."
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp"
+            android:paddingBottom="30dp"
+            android:fontFamily="@font/caviardreams"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:weightSum="3">
+
+        <TextView
+            android:fontFamily="@font/caviardreams"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_below="@+id/textView3"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:text="City Selected :" />
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_weight="2"
+            android:fontFamily="@font/caviardreams"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="25sp"
+            android:width="250sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:weightSum="3">
+
+        <TextView
+
+            android:fontFamily="@font/caviardreams"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_below="@+id/textView3"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:text="Journey Dates :" />
+
+        <TextView
+            android:id="@+id/journey"
+            android:layout_weight="2"
+            android:fontFamily="@font/caviardreams"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="25sp"
+            android:width="250sp"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:weightSum="3">
+
+            <TextView
+
+                android:fontFamily="@font/caviardreams"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_alignStart="@+id/textView3"
+                android:layout_below="@+id/textView3"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:text="Tourist Place :" />
+
+            <TextView
+                android:id="@+id/tourist"
+                android:layout_weight="2"
+                android:fontFamily="@font/caviardreams"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="25sp"
+                android:width="250sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:weightSum="3">
+
+            <TextView
+
+                android:fontFamily="@font/caviardreams"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_alignStart="@+id/textView3"
+                android:layout_below="@+id/textView3"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:text="Tourist Place Type :" />
+
+            <TextView
+                android:id="@+id/placetype"
+                android:layout_weight="2"
+                android:fontFamily="@font/caviardreams"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="25sp"
+                android:width="250sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:weightSum="3">
+
+            <TextView
+
+                android:fontFamily="@font/caviardreams"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView3"
+                android:layout_below="@+id/textView3"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:text="Interested Event :" />
+
+            <TextView
+                android:id="@+id/events"
+                android:layout_weight="2"
+                android:fontFamily="@font/caviardreams"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="25sp"
+                android:width="250sp"/>
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:weightSum="3">
+
+                <TextView
+
+                    android:fontFamily="@font/caviardreams"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textView3"
+                    android:layout_below="@+id/textView3"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
+                    android:text="Event timings :" />
+
+                <TextView
+                    android:id="@+id/eventtime"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/caviardreams"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="25sp"
+                    android:width="250sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

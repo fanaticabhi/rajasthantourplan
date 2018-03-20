@@ -4,25 +4,29 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textview1"
         android:text="text1"
         android:textSize="23dp"
-        android:layout_weight="1"/>
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/caviardreams"
+        android:textStyle="bold"
+        android:paddingVertical="10dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textview2"
-        android:textAlignment="textEnd"
-        android:text="text2"
-        android:textSize="23dp"
-        android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="10dp"
+            android:text="text2"
+            android:textColor="@color/colorPrimary"
+            android:textSize="23dp"
+            android:fontFamily="@font/caviardreams"
+            android:textStyle="bold"/>
     </LinearLayout>
-
 </RelativeLayout>

@@ -54,24 +54,3 @@ public class customadapter extends BaseAdapter {
     }
 
 }
-/*ArrayAdapter<String>{
-
-
-    public customadapter(@NonNull Context context,String[] place, String[] place_type) {
-        super(context, R.layout.customrow,completejsondata.place);
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent){
-        LayoutInflater buckyInflator=LayoutInflater.from(getContext());
-        View customView=buckyInflator.inflate(R.layout.customrow,parent,false);
-
-        String singleFooditem=getItem(position);
-        TextView t1=(TextView)customView.findViewById(R.id.textview1);
-        TextView t2=(TextView)customView.findViewById(R.id.textview2);
-
-        t1.setText(""+completejsondata.place);
-        t2.setText(""+completejsondata.place_type);
-        return  customView;
-    }
-}*/

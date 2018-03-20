@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/oldpaper"
+    android:layout_height="match_parent"
+    tools:context="com.example.abhi.rajasthantourplan.transport_new">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="20sp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How to get there?"
+                android:fontFamily="@font/caviardreams"
+                android:textSize="35sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/air"
+            android:layout_marginTop="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:src="@drawable/ic_send" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Air"
+                android:fontFamily="@font/caviardreams"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/rail"
+            android:layout_marginTop="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:src="@drawable/ic_train" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/caviardreams"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="Rail"
+                android:textSize="30sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/road"
+            android:layout_marginTop="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="100sp"
+                android:layout_height="100sp"
+                android:src="@drawable/ic_bus" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/caviardreams"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="Road"
+                android:textSize="30sp" />
+            <Button
+                android:id="@+id/button"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/caviardreams"
+                android:textStyle="bold"
+                android:text="Proceed"
+                android:textColor="#DAA520"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

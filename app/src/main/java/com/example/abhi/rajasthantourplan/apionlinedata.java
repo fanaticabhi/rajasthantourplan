@@ -1,5 +1,8 @@
 package com.example.abhi.rajasthantourplan;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,48 +19,20 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.util.ArrayList;
 
-public class completejsondata extends AppCompatActivity {
-    TextView t1;
-    Button b1;
-    static String city[];
-    static String place[];
-    static String place_type[];
+public class apionlinedata extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_completejsondata);
-        t1 = (TextView) findViewById(R.id.textview);
-        b1 = (Button) findViewById(R.id.clickme);
-        getjsondata();
-
-        Intent i = new Intent(completejsondata.this, tourdates.class);
-        startActivity(i);
-    } /*  b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setdata();
-                Intent i = new Intent(completejsondata.this, listview.class);
-                startActivity(i);
-
-            }
-        });
-*/
-
-
-
-    public void setdata() {
-        for (int i = 0; i < place.length; i++)
-            t1.setText(t1.getText() + "\n\n" + place[i] + "\t" + city[i]);
-        // Intent i=new Intent(this,listview.class);
-        // startActivity(i);
+        setContentView(R.layout.activity_apionlinedata);
     }
 
 
     public void getjsondata() {
 
-        JsonArrayRequest st = new JsonArrayRequest("http://www.rajasthantourplan.esy.es/phpfiles/retrieve.php", new Response.Listener<JSONArray>() {
+        JsonArrayRequest st = new JsonArrayRequest("http://www.rajasthantourplan.esy.es/phpfiles/demo.py", new Response.Listener<JSONArray>() {
             // @Override
             public void onResponse(JSONArray response) {
                 get_response(response);
@@ -66,18 +41,18 @@ public class completejsondata extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(completejsondata.this, "fatal error" + error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(apionlinedata.this, "fatal error" + error.toString(), Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        RequestQueue q = Volley.newRequestQueue(completejsondata.this);
+        RequestQueue q = Volley.newRequestQueue(apionlinedata.this);
         q.add(st);
     }
 
 
     public void get_response(JSONArray response) {
-        city = new String[response.length()];
+    /*    city = new String[response.length()];
         place = new String[response.length()];
         place_type = new String[response.length()];
 
@@ -98,7 +73,6 @@ public class completejsondata extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(completejsondata.this, "fatal error" + e.toString(), Toast.LENGTH_SHORT).show();
         }
+    }*/
     }
 }
-
-

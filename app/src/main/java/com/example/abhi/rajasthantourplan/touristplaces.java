@@ -1,7 +1,12 @@
 package com.example.abhi.rajasthantourplan;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,8 +42,23 @@ public class touristplaces extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touristplaces);
 
-        s1 = (Spinner) findViewById(R.id.spinner);
-        getjsondata();
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            s1 = (Spinner) findViewById(R.id.spinner);
+            getjsondata();
+
+        }
+        else {
+            //  Toast.makeText(launcher.this,"error",Toast.LENGTH_SHORT).show();
+
+            alert();
+        }
+
+
+
+
 
 
  }
@@ -109,5 +129,33 @@ public class touristplaces extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(touristplaces.this,"fatal error" + e.toString(),Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void alert() {
+        AlertDialog.Builder builder;
+          builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("INTERNET CONNECTION FAILURE")
+                .setMessage("Check your Internet Connection...")
+                .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        finishAffinity();
+                    }
+                })
+                .setNegativeButton("Retry", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                        Intent i=new Intent(touristplaces.this,touristplaces.class);
+                        startActivity(i);
+
+                    }
+                })
+
+                .setIcon(R.drawable.ic_danger)
+                .show()
+                .setCancelable(false);
+
+
     }
 }
